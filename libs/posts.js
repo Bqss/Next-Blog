@@ -23,7 +23,8 @@ export function getSortedPostsData (){
 }
 
 export function getAllPostIds(){
-    const fileNames = fs.readdirSync(postDirectory)
+    let fileNames = fs .readdirSync(postDirectory);
+    fileNames = [...fileNames].filter(filename => filename.split(".")[1]== "md");
     return fileNames.map(fileName => ({params:{id: fileName.replace(/\.md$/,'')}}))
 }
 
